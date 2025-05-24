@@ -1,0 +1,1328 @@
+[
+    {
+        "id": "4caf6af126168709",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7c2c95d8b9b5f7f9",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.emqx.io",
+        "port": "8883",
+        "tls": "",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "myBroker",
+        "type": "mqtt-broker",
+        "name": "MyMQTT",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "f19a65f3851d73b8",
+        "type": "ui_tab",
+        "name": "Weather",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "2384f79ee4f09db8",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "a4665663c04cc0da",
+        "type": "ui_group",
+        "name": "Live Data",
+        "tab": "f19a65f3851d73b8",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "cf5bd18836d913e1",
+        "type": "influxdb",
+        "hostname": "https://us-east-1-1.aws.cloud2.influxdata.com",
+        "port": 8086,
+        "protocol": "http",
+        "database": "weather_live",
+        "name": "",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "https://us-east-1-1.aws.cloud2.influxdata.com",
+        "timeout": 10,
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "79ae80be3cfdd048",
+        "type": "ui_group",
+        "name": "Get 48hr Forecast Temp",
+        "tab": "f19a65f3851d73b8",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6c81089e8ec2ece5",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "f19a65f3851d73b8",
+        "order": 4,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7f4daaf0898c6b2e",
+        "type": "ui_group",
+        "name": "Pressure Alarm",
+        "tab": "f19a65f3851d73b8",
+        "order": 3,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4689550ed69adeda",
+        "type": "mqtt out",
+        "z": "4caf6af126168709",
+        "name": "",
+        "topic": "team_ADP/iot2025/predict/48h",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "7c2c95d8b9b5f7f9",
+        "x": 873,
+        "y": 677,
+        "wires": []
+    },
+    {
+        "id": "316edc65170a3270",
+        "type": "mqtt out",
+        "z": "4caf6af126168709",
+        "name": "",
+        "topic": "team_ADP/iot2025/alarms",
+        "qos": "1",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "7c2c95d8b9b5f7f9",
+        "x": 1220,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "9c57fa6bb7e7530e",
+        "type": "mqtt in",
+        "z": "4caf6af126168709",
+        "name": "",
+        "topic": "team_ADP/iot2025/live",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "7c2c95d8b9b5f7f9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 860,
+        "y": 360,
+        "wires": [
+            [
+                "16ba671c324dc2b0",
+                "acc31906b4e3814b",
+                "5f754c0d20268e0a",
+                "cab4bc62c2c2311e",
+                "6939943bfbae5945",
+                "a1c098e82aab1b39",
+                "f471f0cbcb632f1c",
+                "bdb796d33e7d123b"
+            ]
+        ]
+    },
+    {
+        "id": "acc31906b4e3814b",
+        "type": "debug",
+        "z": "4caf6af126168709",
+        "name": "Live Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "inject_5min",
+        "type": "inject",
+        "z": "4caf6af126168709",
+        "name": "Every 5 min",
+        "props": [],
+        "repeat": "300",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "5",
+        "topic": "",
+        "x": 110,
+        "y": 240,
+        "wires": [
+            [
+                "http_weather"
+            ]
+        ]
+    },
+    {
+        "id": "http_weather",
+        "type": "http request",
+        "z": "4caf6af126168709",
+        "name": "OpenWeather One Call",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.openweathermap.org/data/2.5/weather?q=Auckland,nz&APPID=332a0c7ee848395e7b6bf12d1527eccf&units=metric",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 300,
+        "y": 240,
+        "wires": [
+            [
+                "fn_normalise"
+            ]
+        ]
+    },
+    {
+        "id": "fn_normalise",
+        "type": "function",
+        "z": "4caf6af126168709",
+        "name": "Normalise ➜ MQTT payload",
+        "func": "// Pull out the parts you care about from /data/2.5/weather\nconst main = msg.payload.main;     // temp, pressure, humidity\nconst clouds = msg.payload.clouds;   // optional extra\nconst wind = msg.payload.wind;     //   \"\n\nmsg.payload = {\n  timestamp: (msg.payload.dt + msg.payload.timezone) * 1000,  // local epoch-ms\n  device: env.get(\"DEVICE\") || \"0001\",\n  source: \"openweather_2.5\",\n  pressure_hPa: main.pressure,\n  temp_C: main.temp,\n  temp_min_C: main.temp_min,\n  temp_max_C: main.temp_max,\n  humidity: main.humidity,\n  sea_level: main.sea_level,\n  grnd_level: main.grnd_level,\n  clouds_percent: clouds?.all,\n  wind_m_s: wind?.speed,\n  wind_deg: wind?.deg,\n  wind_gust: wind?.gust\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 240,
+        "wires": [
+            [
+                "debug_out",
+                "6db27f5af426b04b",
+                "113d054559785cb9"
+            ]
+        ]
+    },
+    {
+        "id": "debug_out",
+        "type": "debug",
+        "z": "4caf6af126168709",
+        "name": "see OpenWeather API JSON",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "62654fb72394af10",
+        "type": "ui_gauge",
+        "z": "4caf6af126168709",
+        "name": "Temp Gauge",
+        "group": "a4665663c04cc0da",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature (°C)",
+        "label": "",
+        "format": "{{value | number:1}} °C",
+        "min": 0,
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1370,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "16ba671c324dc2b0",
+        "type": "influxdb out",
+        "z": "4caf6af126168709",
+        "influxdb": "cf5bd18836d913e1",
+        "name": "",
+        "measurement": "auckland",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "Paul",
+        "bucket": "weather_live",
+        "x": 1270,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "ceffd65e962fa1ac",
+        "type": "inject",
+        "z": "4caf6af126168709",
+        "name": "Every 1h",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 123,
+        "y": 677,
+        "wires": [
+            [
+                "c60bf01480d12599"
+            ]
+        ]
+    },
+    {
+        "id": "c60bf01480d12599",
+        "type": "http request",
+        "z": "4caf6af126168709",
+        "name": "GET Predict API",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8000/predict?hours_to_forecast=48",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 343,
+        "y": 677,
+        "wires": [
+            [
+                "5b7852dae621274f"
+            ]
+        ]
+    },
+    {
+        "id": "5b7852dae621274f",
+        "type": "function",
+        "z": "4caf6af126168709",
+        "name": "Predict Parser",
+        "func": "if (msg.payload && Array.isArray(msg.payload.forecast)) {\n    msg.payload = msg.payload.forecast;\n} else {\n    node.warn(\"Forecast data not found or not in expected array format from API.\");\n    // msg.payload = []; // Send empty array or null to indicate error\n    return null; // Or don't send anything if there's an error\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 583,
+        "y": 677,
+        "wires": [
+            [
+                "4689550ed69adeda"
+            ]
+        ]
+    },
+    {
+        "id": "82a31f6ab61c6d1e",
+        "type": "mqtt in",
+        "z": "4caf6af126168709",
+        "name": "",
+        "topic": "team_ADP/iot2025/predict/48h",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "7c2c95d8b9b5f7f9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 873,
+        "y": 757,
+        "wires": [
+            [
+                "3ff6f5004ccf030a",
+                "4339b0d4d9ef62da",
+                "28e8c490305a0daa",
+                "09abf20dfb3827ad"
+            ]
+        ]
+    },
+    {
+        "id": "3ff6f5004ccf030a",
+        "type": "debug",
+        "z": "4caf6af126168709",
+        "name": "Predict Temp 48h Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1183,
+        "y": 757,
+        "wires": []
+    },
+    {
+        "id": "6db27f5af426b04b",
+        "type": "function",
+        "z": "4caf6af126168709",
+        "name": "Pressure Drop Detector",
+        "func": "// --- Configuration for Pressure Drop Alarm ---\nconst PRESSURE_FIELD_PATH = \"payload.pressure_hPa\"; // Path to pressure in msg.payload\nconst SIGNIFICANT_DROP_HPA = 2; // How much pressure must drop (e.g., 2 hPa)\nconst LOOKBACK_WINDOW_MINUTES = 60; // How far back to compare (e.g., 60 minutes = 1 hour)\nconst HISTORY_MAX_AGE_MINUTES = LOOKBACK_WINDOW_MINUTES + 30; // Keep a bit more history (90 mins)\n// --- End Configuration ---\n\nlet currentPressure;\ntry {\n    // Attempt to get the pressure value using the defined path\n    // This handles nested objects like msg.payload.main.pressure\n    currentPressure = PRESSURE_FIELD_PATH.split('.').reduce((o, k) => (o || {})[k], msg);\n    if (typeof currentPressure !== 'number') {\n        node.warn(`Pressure value at path '${PRESSURE_FIELD_PATH}' is not a number: ${currentPressure}`);\n        return null; // Stop if no valid pressure data\n    }\n} catch (e) {\n    node.warn(`Error accessing pressure value at path '${PRESSURE_FIELD_PATH}': ${e.message}`);\n    return null; // Stop if path is invalid\n}\n\nconst currentTime = new Date().getTime(); // Current time in milliseconds\n\n// Get or initialize pressure history from flow context\nlet pressureHistory = flow.get(\"pressureHistory\") || [];\n\n// Add current reading to history\npressureHistory.push({\n    time: currentTime,\n    pressure: currentPressure\n});\n\n// Prune old readings from history to keep it manageable\nconst historyMaxAgeMs = HISTORY_MAX_AGE_MINUTES * 60 * 1000;\npressureHistory = pressureHistory.filter(reading => (currentTime - reading.time) < historyMaxAgeMs);\n\n// Save updated history back to flow context\nflow.set(\"pressureHistory\", pressureHistory);\n\n// Check for a significant drop\n// We need at least one historical point to compare against from the lookback window\nconst lookbackWindowMs = LOOKBACK_WINDOW_MINUTES * 60 * 1000;\nlet alarmTriggered = false;\nlet comparisonPoint = null;\n\n// Find a suitable point in history to compare against (approx. LOOKBACK_WINDOW_MINUTES ago)\n// We'll look for the oldest point that is still within our effective comparison start time\nconst comparisonStartTime = currentTime - lookbackWindowMs;\n\n// Find the earliest reading that is still within the start of our lookback window.\n// Or, find a reading that is *closest* to LOOKBACK_WINDOW_MINUTES ago.\n// For simplicity, let's find any point that is older than (currentTime - lookbackWindowMs)\n// and check the drop from the *oldest such point* or a specific point.\n\n// Let's find a point that is roughly LOOKBACK_WINDOW_MINUTES ago or older but within our history.\n// We are looking for a point that is (currentTime - lookbackWindowMs) +/- a small margin,\n// or simply the oldest point within the history that is still relevant for the window.\n\n// Iterate backwards from the second to last point (most recent historical)\n// to find a point that's roughly LOOKBACK_WINDOW_MINUTES old.\n// A simpler way for now: Check against the oldest point in our history that is at least\n// (LOOKBACK_WINDOW_MINUTES - some_tolerance) old.\n\n// For this example, let's check if there's any point in the history (within the lookback window)\n// from which the pressure has dropped significantly.\n\nfor (let i = 0; i < pressureHistory.length - 1; i++) { // -1 because current reading is the last one\n    const pastReading = pressureHistory[i];\n    // Check if this pastReading is within our defined lookback window from the current time\n    if ((currentTime - pastReading.time) <= lookbackWindowMs && (currentTime - pastReading.time) > 0) {\n        // This ensures we are looking at points within the window, not the current point itself\n        const pressureChange = pastReading.pressure - currentPressure;\n        if (pressureChange >= SIGNIFICANT_DROP_HPA) {\n            alarmTriggered = true;\n            comparisonPoint = pastReading;\n            node.log(`Pressure drop detected! Current: ${currentPressure} hPa, Past (${new Date(comparisonPoint.time).toLocaleTimeString()}): ${comparisonPoint.pressure} hPa, Drop: ${pressureChange.toFixed(2)} hPa`);\n            break; // Found a significant drop, no need to check further back for this trigger\n        }\n    }\n}\n\n\nif (alarmTriggered && comparisonPoint) {\n    const alarmMsg = {\n        payload: {\n            alarm_type: \"pressure_drop\",\n            message: `Significant pressure drop of ${(comparisonPoint.pressure - currentPressure).toFixed(2)} hPa detected over the last ~${LOOKBACK_WINDOW_MINUTES} minutes.`,\n            current_pressure_hPa: currentPressure,\n            previous_pressure_hPa: comparisonPoint.pressure, // The specific point that triggered the comparison\n            previous_pressure_time: new Date(comparisonPoint.time).toISOString(),\n            drop_hPa: parseFloat((comparisonPoint.pressure - currentPressure).toFixed(2)),\n            detected_at: new Date(currentTime).toISOString()\n        },\n        // You can set a specific topic here if needed, or let the MQTT out node handle it\n        // topic: \"team_ADP/iot2025/alarms/pressure_drop\" \n    };\n    // To avoid repeated alarms for the same ongoing drop, you might want to add a cooldown logic\n    // e.g., set a flow context variable like flow.set(\"pressure_alarm_active_until\", currentTime + COOLDOWN_PERIOD_MS);\n    // and check this before sending a new alarm. For now, it sends an alarm each time condition is met.\n    return alarmMsg;\n}\n\nreturn null; // No alarm, send nothing\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 80,
+        "wires": [
+            [
+                "316edc65170a3270"
+            ]
+        ]
+    },
+    {
+        "id": "e9088c94917a8c52",
+        "type": "mqtt in",
+        "z": "4caf6af126168709",
+        "name": "",
+        "topic": "team_ADP/iot2025/alarms",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "7c2c95d8b9b5f7f9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1210,
+        "y": 160,
+        "wires": [
+            [
+                "d4ed8d1cbdd10ffa",
+                "4988e96a0290f27a",
+                "5c6b1e1db10f9d5a",
+                "59668a9ebf271b5a",
+                "2b02678433c4afe7"
+            ]
+        ]
+    },
+    {
+        "id": "d4ed8d1cbdd10ffa",
+        "type": "debug",
+        "z": "4caf6af126168709",
+        "name": "Pressure Alarm Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1530,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "113d054559785cb9",
+        "type": "mqtt out",
+        "z": "4caf6af126168709",
+        "name": "",
+        "topic": "team_ADP/iot2025/live",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "7c2c95d8b9b5f7f9",
+        "x": 880,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "5f754c0d20268e0a",
+        "type": "change",
+        "z": "4caf6af126168709",
+        "name": "Extract Temp Value",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temp_C",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 420,
+        "wires": [
+            [
+                "62654fb72394af10"
+            ]
+        ]
+    },
+    {
+        "id": "a2f37ddc3ed5a1bf",
+        "type": "ui_gauge",
+        "z": "4caf6af126168709",
+        "name": "Humidity Gauge",
+        "group": "a4665663c04cc0da",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value | number:0}} %",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1380,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "cab4bc62c2c2311e",
+        "type": "change",
+        "z": "4caf6af126168709",
+        "name": "Extract Humidity Value",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.humidity",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1140,
+        "y": 460,
+        "wires": [
+            [
+                "a2f37ddc3ed5a1bf"
+            ]
+        ]
+    },
+    {
+        "id": "18304adda9defe0d",
+        "type": "ui_text",
+        "z": "4caf6af126168709",
+        "group": "a4665663c04cc0da",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Device ID Text",
+        "label": "Device ID",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1380,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "6939943bfbae5945",
+        "type": "change",
+        "z": "4caf6af126168709",
+        "name": "Extract Device ID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.device",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 540,
+        "wires": [
+            [
+                "18304adda9defe0d"
+            ]
+        ]
+    },
+    {
+        "id": "a1c098e82aab1b39",
+        "type": "change",
+        "z": "4caf6af126168709",
+        "name": "Extract Source",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.source",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1120,
+        "y": 580,
+        "wires": [
+            [
+                "eacf596beff65276"
+            ]
+        ]
+    },
+    {
+        "id": "eacf596beff65276",
+        "type": "ui_text",
+        "z": "4caf6af126168709",
+        "group": "a4665663c04cc0da",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Source Text",
+        "label": "Data Source",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1370,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "86f817e1a37ad825",
+        "type": "ui_text",
+        "z": "4caf6af126168709",
+        "group": "a4665663c04cc0da",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Timestamp Text",
+        "label": "Last Update",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1380,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "f471f0cbcb632f1c",
+        "type": "function",
+        "z": "4caf6af126168709",
+        "name": "Format Timestamp",
+        "func": "let originalTimestamp = msg.payload.timestamp;\nlet dateObject = new Date(originalTimestamp);\nmsg.payload = dateObject.toLocaleString();\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1130,
+        "y": 620,
+        "wires": [
+            [
+                "86f817e1a37ad825"
+            ]
+        ]
+    },
+    {
+        "id": "bdb796d33e7d123b",
+        "type": "change",
+        "z": "4caf6af126168709",
+        "name": "Extract Pressure Value",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.pressure_hPa",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1140,
+        "y": 500,
+        "wires": [
+            [
+                "f6e68d1a5b80fd61"
+            ]
+        ]
+    },
+    {
+        "id": "f6e68d1a5b80fd61",
+        "type": "ui_gauge",
+        "z": "4caf6af126168709",
+        "name": "Pressure Gauge",
+        "group": "a4665663c04cc0da",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Pressure",
+        "label": "",
+        "format": "{{value | number:0}} hPa",
+        "min": "950",
+        "max": "1050",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1380,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "305fee5272e1bc8c",
+        "type": "ui_gauge",
+        "z": "4caf6af126168709",
+        "name": "48hr Predicted Temp Gauge",
+        "group": "79ae80be3cfdd048",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temp Forecast (48hr)",
+        "label": "°C",
+        "format": "{{value | number:1}} °C",
+        "min": "0",
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1440,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "4339b0d4d9ef62da",
+        "type": "change",
+        "z": "4caf6af126168709",
+        "name": "Get Predicted Temp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[47]",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1160,
+        "y": 800,
+        "wires": [
+            [
+                "305fee5272e1bc8c"
+            ]
+        ]
+    },
+    {
+        "id": "fe9b2001e6d49b73",
+        "type": "ui_gauge",
+        "z": "4caf6af126168709",
+        "name": "24hr Predicted Temp Gauge",
+        "group": "79ae80be3cfdd048",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temp Forecast (24hr)",
+        "label": "°C",
+        "format": "{{value | number:1}} °C",
+        "min": "0",
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1440,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "28e8c490305a0daa",
+        "type": "change",
+        "z": "4caf6af126168709",
+        "name": "Get Predicted Temp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[23]",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1160,
+        "y": 840,
+        "wires": [
+            [
+                "fe9b2001e6d49b73"
+            ]
+        ]
+    },
+    {
+        "id": "1446a2690893e284",
+        "type": "ui_gauge",
+        "z": "4caf6af126168709",
+        "name": "1hr Predicted Temp Gauge",
+        "group": "79ae80be3cfdd048",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temp Forecast (1hr)",
+        "label": "°C",
+        "format": "{{value | number:1}} °C",
+        "min": "0",
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1440,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "09abf20dfb3827ad",
+        "type": "change",
+        "z": "4caf6af126168709",
+        "name": "Get Predicted Temp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[0]",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1160,
+        "y": 880,
+        "wires": [
+            [
+                "1446a2690893e284"
+            ]
+        ]
+    },
+    {
+        "id": "4988e96a0290f27a",
+        "type": "change",
+        "z": "4caf6af126168709",
+        "name": "Extract Alarm Message Text",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.message",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1500,
+        "y": 180,
+        "wires": [
+            [
+                "976dc21773e2e02f"
+            ]
+        ]
+    },
+    {
+        "id": "976dc21773e2e02f",
+        "type": "ui_text",
+        "z": "4caf6af126168709",
+        "group": "7f4daaf0898c6b2e",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Current Alarm",
+        "label": "Pressure Alarm",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1760,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "8aa6b03f87bb9416",
+        "type": "ui_text",
+        "z": "4caf6af126168709",
+        "group": "7f4daaf0898c6b2e",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Current P (Alarm)",
+        "label": "Current Pressure (Alarm)",
+        "format": "{{msg.payload}} hPa",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1770,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "5c6b1e1db10f9d5a",
+        "type": "change",
+        "z": "4caf6af126168709",
+        "name": "Extract Alarm Message Text",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.current_pressure_hPa",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1500,
+        "y": 220,
+        "wires": [
+            [
+                "8aa6b03f87bb9416"
+            ]
+        ]
+    },
+    {
+        "id": "59668a9ebf271b5a",
+        "type": "change",
+        "z": "4caf6af126168709",
+        "name": "Extract Alarm Message Text",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.drop_hPa",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1500,
+        "y": 260,
+        "wires": [
+            [
+                "5c679020bc06a42b"
+            ]
+        ]
+    },
+    {
+        "id": "5c679020bc06a42b",
+        "type": "ui_text",
+        "z": "4caf6af126168709",
+        "group": "7f4daaf0898c6b2e",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Pressure Drop",
+        "format": "{{msg.payload}} hPa",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1760,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "2b02678433c4afe7",
+        "type": "function",
+        "z": "4caf6af126168709",
+        "name": "Format Detected At",
+        "func": "let isoTimestamp = msg.payload.detected_at;\nlet dateObject = new Date(isoTimestamp);\n\n// Format the date and time.\n// .toLocaleString() will convert it to the server's local timezone and format.\nmsg.payload = dateObject.toLocaleString();\n\n// For more specific formatting, you could use:\n/*\nlet year = dateObject.getFullYear();\nlet month = ('0' + (dateObject.getMonth() + 1)).slice(-2);\nlet day = ('0' + dateObject.getDate()).slice(-2);\nlet hours = ('0' + dateObject.getHours()).slice(-2);\nlet minutes = ('0' + dateObject.getMinutes()).slice(-2);\nlet seconds = ('0' + dateObject.getSeconds()).slice(-2);\nmsg.payload = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;\n*/\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1470,
+        "y": 300,
+        "wires": [
+            [
+                "4820eb6df9a9012b"
+            ]
+        ]
+    },
+    {
+        "id": "4820eb6df9a9012b",
+        "type": "ui_text",
+        "z": "4caf6af126168709",
+        "group": "7f4daaf0898c6b2e",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Alarm Detected At",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1770,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "3cc59fb68ab12c9c",
+        "type": "function",
+        "z": "4caf6af126168709",
+        "name": "Fake Data",
+        "func": "// Simulate some base data that your original code might have received\n// from an API call. For testing, we'll just make it up.\nlet main = {\n  pressure: 1019, // Example value\n  temp: 11.97,     // Example value\n  temp_min: 10.72, // Example value\n  temp_max: 12.8, // Example value\n  humidity: 64,   // Example value\n  sea_level: 1024,// Example value\n  grnd_level: 1020// Example value\n};\n\nlet clouds = {\n  all: 30 // Example value for cloudiness percentage\n};\n\nlet wind = {\n  speed: 3.13, // Example value for wind speed m/s\n  deg: 159,   // Example value for wind direction\n  gust: 4.02   // Example value for wind gust\n};\n\nlet currentTimestamp = Date.now(); // Use current time for the fake data\n\n// Construct the payload similar to your example\nmsg.payload = {\n  timestamp: currentTimestamp, // Real current timestamp in ms\n  device: \"TestDevice-007\",   // Fake device ID\n  source: \"fake_weather_test\", // Fake source\n  pressure_hPa: main.pressure,\n  temp_C: main.temp,\n  temp_min_C: main.temp_min,\n  temp_max_C: main.temp_max,\n  humidity: main.humidity,\n  sea_level: main.sea_level,\n  grnd_level: main.grnd_level,\n  clouds_percent: clouds.all,\n  wind_m_s: wind.speed,\n  wind_deg: wind.deg,\n  wind_gust: wind.gust\n};\n\n// If your MQTT In node expects a specific topic for this data,\n// you can set it here. Otherwise, the Inject node's topic will be used\n// or you'll set it in the MQTT Out node.\n// msg.topic = \"your/weather/topic\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 1600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "66e92719a33d173e",
+        "type": "inject",
+        "z": "4caf6af126168709",
+        "name": "Every 5 min",
+        "props": [],
+        "repeat": "300",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "5",
+        "topic": "",
+        "x": 110,
+        "y": 1540,
+        "wires": [
+            [
+                "2b568e6094f0c37e"
+            ]
+        ]
+    },
+    {
+        "id": "2b568e6094f0c37e",
+        "type": "function",
+        "z": "4caf6af126168709",
+        "name": "Fake Data",
+        "func": "// Simulate some base data that your original code might have received\n// from an API call. For testing, we'll just make it up.\nlet main = {\n  pressure: 1024, // Example value\n  temp: 11.97,     // Example value\n  temp_min: 10.72, // Example value\n  temp_max: 12.8, // Example value\n  humidity: 64,   // Example value\n  sea_level: 1024,// Example value\n  grnd_level: 1020// Example value\n};\n\nlet clouds = {\n  all: 30 // Example value for cloudiness percentage\n};\n\nlet wind = {\n  speed: 3.13, // Example value for wind speed m/s\n  deg: 159,   // Example value for wind direction\n  gust: 4.02   // Example value for wind gust\n};\n\nlet currentTimestamp = Date.now(); // Use current time for the fake data\n\n// Construct the payload similar to your example\nmsg.payload = {\n  timestamp: currentTimestamp, // Real current timestamp in ms\n  device: \"TestDevice-007\",   // Fake device ID\n  source: \"fake_weather_test\", // Fake source\n  pressure_hPa: main.pressure,\n  temp_C: main.temp,\n  temp_min_C: main.temp_min,\n  temp_max_C: main.temp_max,\n  humidity: main.humidity,\n  sea_level: main.sea_level,\n  grnd_level: main.grnd_level,\n  clouds_percent: clouds.all,\n  wind_m_s: wind.speed,\n  wind_deg: wind.deg,\n  wind_gust: wind.gust\n};\n\n// If your MQTT In node expects a specific topic for this data,\n// you can set it here. Otherwise, the Inject node's topic will be used\n// or you'll set it in the MQTT Out node.\n// msg.topic = \"your/weather/topic\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 1540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0f85807b708f8179",
+        "type": "inject",
+        "z": "4caf6af126168709",
+        "name": "Every 7 min",
+        "props": [],
+        "repeat": "420",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "5",
+        "topic": "",
+        "x": 110,
+        "y": 1600,
+        "wires": [
+            [
+                "3cc59fb68ab12c9c"
+            ]
+        ]
+    }
+]
